@@ -1,0 +1,5 @@
+numpy==1.19.2
+matplotlib==2.2.3
+networkx==2.3
+pydot==1.4.1
+streamlit==0.69.2

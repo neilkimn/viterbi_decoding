@@ -1,6 +1,7 @@
 # Viterbi Decoding for POS-tagging from scratch
 
-Visualization of the Viterbi algorithm for POS-tagging. Trained on data from the [Universal Dependecy Treebank](https://github.com/UniversalDependencies/UD_Danish-DDT). Live version can be found [here](https://share.streamlit.io/neilkimn/viterbi_decoding/hmm_viterbi_st.py)
+Visualization of the Viterbi algorithm for POS-tagging. Trained on data from the [Universal Dependecy Treebank](https://github.com/UniversalDependencies/UD_Danish-DDT). 
+Live version can be found [here](https://share.streamlit.io/neilkimn/viterbi_decoding/hmm_viterbi_st.py)
 
 ### Requires
 

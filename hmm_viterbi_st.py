@@ -8,6 +8,9 @@ import pydot
 import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.drawing.nx_pydot import graphviz_layout, write_dot
+from matplotlib.backends.backend_agg import RendererAgg
+
+_lock = RendererAgg.lock
 
 # load data
 train_data = myutils.read_conll_file("data/da_ddt-ud-train.conllu")
@@ -35,29 +38,30 @@ pos=nx.drawing.nx_agraph.graphviz_layout(
 
 edges, weights = zip(*nx.get_edge_attributes(G,'weight').items())
 
-fig = plt.figure(figsize=(15,15)) 
+with _lock:
+    fig = plt.figure(figsize=(15,15)) 
 
-nx.draw(
-    G,
-    node_size=2000,
-    node_color='#8f8f8f',
-    edgelist=edges,
-    edge_color=weights,
-    width=10,
-    edge_cmap=plt.cm.Blues,
-    arrowsize=1,
-    with_labels=True,
-    labels={n: n for n in G.nodes},
-    font_color='#FFFFFF',
-    font_size=12,
-    pos=pos
-)
+    nx.draw(
+        G,
+        node_size=2000,
+        node_color='#8f8f8f',
+        edgelist=edges,
+        edge_color=weights,
+        width=10,
+        edge_cmap=plt.cm.Blues,
+        arrowsize=1,
+        with_labels=True,
+        labels={n: n for n in G.nodes},
+        font_color='#FFFFFF',
+        font_size=12,
+        pos=pos
+    )
 
-labels = nx.get_edge_attributes(G,'weight')
+    labels = nx.get_edge_attributes(G,'weight')
 
-nx.draw_networkx_edge_labels(G,pos,edge_labels=labels)
+    nx.draw_networkx_edge_labels(G,pos,edge_labels=labels)
 
-tags = ' '.join(preds[0])
-st.write("POS-tags for input sentence: ", tags)
+    tags = ' '.join(preds[0])
+    st.write("POS-tags for input sentence: ", tags)
 
-st.pyplot(fig)
+    st.pyplot(fig)

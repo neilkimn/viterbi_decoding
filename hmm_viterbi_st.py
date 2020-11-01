@@ -15,7 +15,7 @@ train_data = myutils.read_conll_file("data/da_ddt-ud-train.conllu")
 
 st.title('Visualisation of the Viterbi decoding algorithm for POS-tagging.')
 
-text = st.text_input('Input text for tagging')
+text = st.text_input('Input text for tagging', 'Hvor kommer julemanden fra ?')
 
 hmm = HMM()
 

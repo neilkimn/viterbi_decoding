@@ -1,1 +1,2 @@
+libgraphviz-dev
 python-pygraphviz
